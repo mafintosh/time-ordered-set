@@ -6,6 +6,8 @@ Efficiently maintain a set of nodes ordered by the time they were added to the s
 npm install time-ordered-set
 ```
 
+[![build status](http://img.shields.io/travis/mafintosh/time-ordered-set.svg?style=flat)](http://travis-ci.org/mafintosh/time-ordered-set)
+
 ## Usage
 
 ``` js
