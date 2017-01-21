@@ -1,17 +1,17 @@
-module.exports = LRUList
+module.exports = TimeOrderedSet
 
-function LRUList () {
-  if (!(this instanceof LRUList)) return new LRUList()
+function TimeOrderedSet () {
+  if (!(this instanceof TimeOrderedSet)) return new TimeOrderedSet()
   this.oldest = null
   this.latest = null
   this.length = 0
 }
 
-LRUList.prototype.has = function (node) {
+TimeOrderedSet.prototype.has = function (node) {
   return !!(node.next || node.prev)
 }
 
-LRUList.prototype.add = function (node) {
+TimeOrderedSet.prototype.add = function (node) {
   if (this.has(node)) this.remove(node)
 
   if (!this.latest && !this.oldest) {
@@ -29,7 +29,7 @@ LRUList.prototype.add = function (node) {
   return node
 }
 
-LRUList.prototype.remove = function (node) {
+TimeOrderedSet.prototype.remove = function (node) {
   if (!this.has(node)) return node
 
   if (this.oldest !== node && this.latest !== node) {
@@ -52,7 +52,7 @@ LRUList.prototype.remove = function (node) {
   return node
 }
 
-LRUList.prototype.toArray = function (pick) {
+TimeOrderedSet.prototype.toArray = function (pick) {
   if (!pick) pick = Infinity
   var list = []
   var node = this.oldest
