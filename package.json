@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "Efficiently maintain a set of nodes ordered by the time they were added to the set",
   "main": "index.js",
-  "dependencies": {
-    "standard": "^8.6.0",
-    "tape": "^4.6.3"
+  "dependencies": {},
+  "devDependencies": {
+    "standard": "^12.0.1",
+    "tape": "^4.9.1"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "standard && tape test.js"
   },
