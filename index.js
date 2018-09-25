@@ -8,7 +8,7 @@ function TimeOrderedSet () {
 }
 
 TimeOrderedSet.prototype.has = function (node) {
-  return !!(node.next || node.prev)
+  return !!(node.next || node.prev) || node === this.oldest
 }
 
 TimeOrderedSet.prototype.add = function (node) {
