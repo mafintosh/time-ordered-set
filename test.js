@@ -78,6 +78,17 @@ tape('remove oldest', function (t) {
   t.end()
 })
 
+tape('remove last one', function (t) {
+  var s = set()
+
+  var node = s.add({ hello: 'world' })
+  t.ok(s.has(node))
+  s.remove(node)
+  t.same(s.oldest, null)
+  t.same(s.latest, null)
+  t.end()
+})
+
 tape('remove latest', function (t) {
   var s = set()
 
