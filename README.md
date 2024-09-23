@@ -6,13 +6,11 @@ Efficiently maintain a set of nodes ordered by the time they were added to the s
 npm install time-ordered-set
 ```
 
-[![build status](http://img.shields.io/travis/mafintosh/time-ordered-set.svg?style=flat)](http://travis-ci.org/mafintosh/time-ordered-set)
-
 ## Usage
 
 ``` js
-const set = require('time-ordered-set')
-const s = set()
+const TOS = require('time-ordered-set')
+const s = new TOS()
 
 // add 3 nodes
 
@@ -36,7 +34,7 @@ console.log(s.toArray().map(node => node.hello)) // ['world', 'verden', 'welt']
 
 ## API
 
-#### `const s = set()`
+#### `const s = new TOS()`
 
 Create a new set
 
@@ -53,9 +51,9 @@ Remove a node. Will set `node.next` and `node.prev` to `null`.
 
 Check if a node has been added.
 
-#### `const array = s.toArray(maxCount, [options])`
+#### `const array = s.toArray([options])`
 
-Get an ordered array out of all the nodes, ordered from oldest to newest. Use `options.reverse: true` to get from newest to oldest. Set `maxCount` if you only want to get a subset.
+Get an ordered array out of all the nodes, ordered from oldest to newest. Use `options.reverse: true` to get from newest to oldest. Set `options.limit: number` if you only want to get a subset.
 
 #### `s.oldest`
 

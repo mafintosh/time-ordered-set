@@ -3,10 +3,9 @@
   "version": "1.0.2",
   "description": "Efficiently maintain a set of nodes ordered by the time they were added to the set",
   "main": "index.js",
-  "dependencies": {},
   "devDependencies": {
     "brittle": "^3.0.0",
-    "standard": "^17.0.0"
+    "standard": "^17.1.2"
   },
   "scripts": {
     "test": "standard && brittle test.js"

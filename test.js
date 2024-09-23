@@ -1,8 +1,8 @@
 const test = require('brittle')
-const set = require('./')
+const TOS = require('./')
 
 test('add', function (t) {
-  const s = set()
+  const s = new TOS()
 
   s.add({
     hello: 'world'
@@ -26,7 +26,7 @@ test('add', function (t) {
 })
 
 test('remove', function (t) {
-  const s = set()
+  const s = new TOS()
 
   s.add({
     hello: 'world'
@@ -51,7 +51,7 @@ test('remove', function (t) {
 })
 
 test('remove oldest', function (t) {
-  const s = set()
+  const s = new TOS()
 
   const node = s.add({
     hello: 'world'
@@ -76,7 +76,7 @@ test('remove oldest', function (t) {
 })
 
 test('remove last one', function (t) {
-  const s = set()
+  const s = new TOS()
 
   const node = s.add({ hello: 'world' })
   t.ok(s.has(node))
@@ -86,7 +86,7 @@ test('remove last one', function (t) {
 })
 
 test('remove latest', function (t) {
-  const s = set()
+  const s = new TOS()
 
   s.add({
     hello: 'world'
@@ -111,7 +111,7 @@ test('remove latest', function (t) {
 })
 
 test('maintains time order', function (t) {
-  const s = set()
+  const s = new TOS()
 
   s.add({
     hello: 'world'
@@ -137,7 +137,7 @@ test('maintains time order', function (t) {
 })
 
 test('toArray subset', function (t) {
-  const s = set()
+  const s = new TOS()
 
   s.add({
     hello: 'world'
@@ -151,7 +151,7 @@ test('toArray subset', function (t) {
     hello: 'verden'
   })
 
-  const arr = s.toArray(2)
+  const arr = s.toArray({ limit: 2 })
 
   t.is(s.length, 3)
   t.is(arr.length, 2)
@@ -160,14 +160,14 @@ test('toArray subset', function (t) {
 })
 
 test('toArray subset reverse', function (t) {
-  const s = set()
+  const s = new TOS()
 
   s.add({ value: '1' })
   s.add({ value: '2' })
   s.add({ value: '3' })
   s.add({ value: '4' })
 
-  const subset = s.toArray(3, { reverse: true })
+  const subset = s.toArray({ limit: 3, reverse: true })
 
   t.is(s.length, 4)
   t.is(subset.length, 3)
