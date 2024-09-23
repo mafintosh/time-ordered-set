@@ -11,8 +11,8 @@ npm install time-ordered-set
 ## Usage
 
 ``` js
-var set = require('time-ordered-set')
-var s = set()
+const set = require('time-ordered-set')
+const s = set()
 
 // add 3 nodes
 
@@ -20,7 +20,7 @@ s.add({
   hello: 'world'
 })
 
-var node = s.add({
+const node = s.add({
   hello: 'welt'
 })
 
@@ -36,7 +36,7 @@ console.log(s.toArray().map(node => node.hello)) // ['world', 'verden', 'welt']
 
 ## API
 
-#### `var s = set()`
+#### `const s = set()`
 
 Create a new set
 
@@ -53,7 +53,7 @@ Remove a node. Will set `node.next` and `node.prev` to `null`.
 
 Check if a node has been added.
 
-#### `var array = s.toArray(maxCount, [options])`
+#### `const array = s.toArray(maxCount, [options])`
 
 Get an ordered array out of all the nodes, ordered from oldest to newest. Use `options.reverse: true` to get from newest to oldest. Set `maxCount` if you only want to get a subset.
 
