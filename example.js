@@ -1,8 +1,8 @@
-var set = require('./')
+const set = require('./')
 
-var s = set()
+const s = set()
 
-var n = s.add({
+const n = s.add({
   hello: 'world'
 })
 

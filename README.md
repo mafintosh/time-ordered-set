@@ -53,9 +53,9 @@ Remove a node. Will set `node.next` and `node.prev` to `null`.
 
 Check if a node has been added.
 
-#### `var array = s.toArray(maxCount)`
+#### `var array = s.toArray(maxCount, [options])`
 
-Get an ordered array out of all the nodes, ordered from oldest to newest. Set `maxCount` if you only want to get a subset.
+Get an ordered array out of all the nodes, ordered from oldest to newest. Use `options.reverse: true` to get from newest to oldest. Set `maxCount` if you only want to get a subset.
 
 #### `s.oldest`
 

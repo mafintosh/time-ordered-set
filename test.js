@@ -1,8 +1,8 @@
-var tape = require('tape')
-var set = require('./')
+const test = require('brittle')
+const set = require('./')
 
-tape('add', function (t) {
-  var s = set()
+test('add', function (t) {
+  const s = set()
 
   s.add({
     hello: 'world'
@@ -16,50 +16,23 @@ tape('add', function (t) {
     hello: 'verden'
   })
 
-  var arr = s.toArray()
+  const arr = s.toArray()
 
-  t.same(s.length, 3)
-  t.same(arr.length, 3)
-  t.same(arr[0].hello, 'world')
-  t.same(arr[1].hello, 'welt')
-  t.same(arr[2].hello, 'verden')
-  t.end()
+  t.is(s.length, 3)
+  t.is(arr.length, 3)
+  t.is(arr[0].hello, 'world')
+  t.is(arr[1].hello, 'welt')
+  t.is(arr[2].hello, 'verden')
 })
 
-tape('remove', function (t) {
-  var s = set()
+test('remove', function (t) {
+  const s = set()
 
   s.add({
     hello: 'world'
   })
 
-  var node = s.add({
-    hello: 'welt'
-  })
-
-  s.add({
-    hello: 'verden'
-  })
-
-  s.remove(node)
-
-  var arr = s.toArray()
-
-  t.same(s.length, 2)
-  t.same(arr.length, 2)
-  t.same(arr[0].hello, 'world')
-  t.same(arr[1].hello, 'verden')
-  t.end()
-})
-
-tape('remove oldest', function (t) {
-  var s = set()
-
-  var node = s.add({
-    hello: 'world'
-  })
-
-  s.add({
+  const node = s.add({
     hello: 'welt'
   })
 
@@ -69,28 +42,51 @@ tape('remove oldest', function (t) {
 
   s.remove(node)
 
-  var arr = s.toArray()
+  const arr = s.toArray()
 
-  t.same(s.length, 2)
-  t.same(arr.length, 2)
-  t.same(arr[0].hello, 'welt')
-  t.same(arr[1].hello, 'verden')
-  t.end()
+  t.is(s.length, 2)
+  t.is(arr.length, 2)
+  t.is(arr[0].hello, 'world')
+  t.is(arr[1].hello, 'verden')
 })
 
-tape('remove last one', function (t) {
-  var s = set()
+test('remove oldest', function (t) {
+  const s = set()
 
-  var node = s.add({ hello: 'world' })
+  const node = s.add({
+    hello: 'world'
+  })
+
+  s.add({
+    hello: 'welt'
+  })
+
+  s.add({
+    hello: 'verden'
+  })
+
+  s.remove(node)
+
+  const arr = s.toArray()
+
+  t.is(s.length, 2)
+  t.is(arr.length, 2)
+  t.is(arr[0].hello, 'welt')
+  t.is(arr[1].hello, 'verden')
+})
+
+test('remove last one', function (t) {
+  const s = set()
+
+  const node = s.add({ hello: 'world' })
   t.ok(s.has(node))
   s.remove(node)
-  t.same(s.oldest, null)
-  t.same(s.latest, null)
-  t.end()
+  t.is(s.oldest, null)
+  t.is(s.latest, null)
 })
 
-tape('remove latest', function (t) {
-  var s = set()
+test('remove latest', function (t) {
+  const s = set()
 
   s.add({
     hello: 'world'
@@ -100,29 +96,28 @@ tape('remove latest', function (t) {
     hello: 'welt'
   })
 
-  var node = s.add({
+  const node = s.add({
     hello: 'verden'
   })
 
   s.remove(node)
 
-  var arr = s.toArray()
+  const arr = s.toArray()
 
-  t.same(s.length, 2)
-  t.same(arr.length, 2)
-  t.same(arr[0].hello, 'world')
-  t.same(arr[1].hello, 'welt')
-  t.end()
+  t.is(s.length, 2)
+  t.is(arr.length, 2)
+  t.is(arr[0].hello, 'world')
+  t.is(arr[1].hello, 'welt')
 })
 
-tape('maintains time order', function (t) {
-  var s = set()
+test('maintains time order', function (t) {
+  const s = set()
 
   s.add({
     hello: 'world'
   })
 
-  var n = s.add({
+  const n = s.add({
     hello: 'welt'
   })
 
@@ -132,18 +127,17 @@ tape('maintains time order', function (t) {
 
   s.add(n)
 
-  var arr = s.toArray()
+  const arr = s.toArray()
 
-  t.same(s.length, 3)
-  t.same(arr.length, 3)
-  t.same(arr[0].hello, 'world')
-  t.same(arr[1].hello, 'verden')
-  t.same(arr[2].hello, 'welt')
-  t.end()
+  t.is(s.length, 3)
+  t.is(arr.length, 3)
+  t.is(arr[0].hello, 'world')
+  t.is(arr[1].hello, 'verden')
+  t.is(arr[2].hello, 'welt')
 })
 
-tape('toArray subset', function (t) {
-  var s = set()
+test('toArray subset', function (t) {
+  const s = set()
 
   s.add({
     hello: 'world'
@@ -157,11 +151,27 @@ tape('toArray subset', function (t) {
     hello: 'verden'
   })
 
-  var arr = s.toArray(2)
+  const arr = s.toArray(2)
 
-  t.same(s.length, 3)
-  t.same(arr.length, 2)
-  t.same(arr[0].hello, 'world')
-  t.same(arr[1].hello, 'welt')
-  t.end()
+  t.is(s.length, 3)
+  t.is(arr.length, 2)
+  t.is(arr[0].hello, 'world')
+  t.is(arr[1].hello, 'welt')
+})
+
+test('toArray subset reverse', function (t) {
+  const s = set()
+
+  s.add({ value: '1' })
+  s.add({ value: '2' })
+  s.add({ value: '3' })
+  s.add({ value: '4' })
+
+  const subset = s.toArray(3, { reverse: true })
+
+  t.is(s.length, 4)
+  t.is(subset.length, 3)
+  t.is(subset[0].value, '4')
+  t.is(subset[1].value, '3')
+  t.is(subset[2].value, '2')
 })

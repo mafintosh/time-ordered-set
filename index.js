@@ -52,13 +52,24 @@ TimeOrderedSet.prototype.remove = function (node) {
   return node
 }
 
-TimeOrderedSet.prototype.toArray = function (pick) {
+TimeOrderedSet.prototype.toArray = function (pick, opts = {}) {
   if (!pick) pick = Infinity
-  var list = []
-  var node = this.oldest
-  while (node && pick--) {
-    list.push(node)
-    node = node.next
+  const reverse = (opts && opts.reverse)
+  const list = []
+
+  if (reverse) {
+    let node = this.latest
+    while (node && pick--) {
+      list.push(node)
+      node = node.prev
+    }
+  } else {
+    let node = this.oldest
+    while (node && pick--) {
+      list.push(node)
+      node = node.next
+    }
   }
+
   return list
 }
