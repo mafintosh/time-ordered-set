@@ -1,6 +1,6 @@
 {
   "name": "time-ordered-set",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Efficiently maintain a set of nodes ordered by the time they were added to the set",
   "main": "index.js",
   "files": [
