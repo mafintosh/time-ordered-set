@@ -3,6 +3,9 @@
   "version": "2.0.0",
   "description": "Efficiently maintain a set of nodes ordered by the time they were added to the set",
   "main": "index.js",
+  "files": [
+    "index.js"
+  ],
   "devDependencies": {
     "brittle": "^3.0.0",
     "standard": "^17.1.2"
